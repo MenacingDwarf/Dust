@@ -1,4 +1,4 @@
-#include "Dust.h"
+#include <Dust.h>
 
 class Sandbox : public Dust::Application
 {

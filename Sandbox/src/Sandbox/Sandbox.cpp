@@ -3,7 +3,7 @@
 class Sandbox : public Dust::Application
 {
 public:
-	Sandbox() {};
+	Sandbox() : Dust::Application() {};
 	~Sandbox() {};
 };
 

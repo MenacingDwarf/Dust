@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Core.h"
-#include "Window.h"
+#include "Dust/Window.h"
 
 namespace Dust {
 

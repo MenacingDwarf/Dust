@@ -17,6 +17,9 @@ project "Dust"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "dustpch.h"
+	pchsource "Dust/src/dustpch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -25,13 +28,14 @@ project "Dust"
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{prj.name}/src"
 	}
 
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
-		systemversion "10.0"
+		systemversion "latest"
 
 		defines
 		{
@@ -84,7 +88,7 @@ project "Sandbox"
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
-		systemversion "10.0"
+		systemversion "latest"
 
 		defines
 		{

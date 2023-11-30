@@ -1,3 +1,4 @@
+#include "dustpch.h"
 #include "Application.h"
 
 namespace Dust {

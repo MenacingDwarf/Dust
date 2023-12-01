@@ -11,9 +11,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
+IncludeDir["spdlog"] = "Dust/vendor/spdlog/include"
 IncludeDir["GLFW"] = "Dust/vendor/GLFW/include"
+IncludeDir["Glad"] = "Dust/vendor/Glad/include"
 
 include "Dust/vendor/GLFW"
+include "Dust/vendor/Glad"
 
 project "Dust"
 	location "Dust"
@@ -36,13 +39,15 @@ project "Dust"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.spdlog}",
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 	
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -53,7 +58,8 @@ project "Dust"
 		defines
 		{
 			"DUST_PLATFORM_WINDOWS",
-			"DUST_BUILD_DLL"
+			"DUST_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
@@ -90,8 +96,8 @@ project "Sandbox"
 
 	includedirs
 	{
-		"Dust/vendor/spdlog/include",
-		"Dust/src"
+		"Dust/src",
+		"%{IncludeDir.spdlog}",
 	}
 
 	links

@@ -7,10 +7,10 @@ namespace Dust {
 	class DUST_API MouseMovedEvent : public Event
 	{
 	public:
-		MouseMovedEvent(int x, int y) : m_MouseX(x), m_MouseY(y) {};
+		MouseMovedEvent(float x, float y) : m_MouseX(x), m_MouseY(y) {};
 		
-		inline int GetMouseX() const { return m_MouseX; }
-		inline int GetMouseY() const { return m_MouseY; };
+		inline float GetMouseX() const { return m_MouseX; }
+		inline float GetMouseY() const { return m_MouseY; };
 		std::string ToString() const override
 		{
 			std::stringstream ss;
@@ -22,16 +22,16 @@ namespace Dust {
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput);
 
 	private:
-		int m_MouseX, m_MouseY;
+		float m_MouseX, m_MouseY;
 	};
 
 	class DUST_API MouseScrolledEvent : public Event
 	{
 	public:
-		MouseScrolledEvent(int offsetX, int offsetY) : m_OffsetX(offsetX), m_OffsetY(offsetY) {};
+		MouseScrolledEvent(float offsetX, float offsetY) : m_OffsetX(offsetX), m_OffsetY(offsetY) {};
 
-		inline int GetOffsetX() const { return m_OffsetX; }
-		inline int GetOffsetY() const { return m_OffsetY; };
+		inline float GetOffsetX() const { return m_OffsetX; }
+		inline float GetOffsetY() const { return m_OffsetY; };
 		std::string ToString() const override
 		{
 			std::stringstream ss;
@@ -43,7 +43,7 @@ namespace Dust {
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput);
 
 	private:
-		int m_OffsetX, m_OffsetY;
+		float m_OffsetX, m_OffsetY;
 	};
 
 	class DUST_API MouseButtonEvent : public Event

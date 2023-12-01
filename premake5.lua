@@ -14,9 +14,11 @@ IncludeDir = {}
 IncludeDir["spdlog"] = "Dust/vendor/spdlog/include"
 IncludeDir["GLFW"] = "Dust/vendor/GLFW/include"
 IncludeDir["Glad"] = "Dust/vendor/Glad/include"
+IncludeDir["ImGui"] = "Dust/vendor/imgui"
 
 include "Dust/vendor/GLFW"
 include "Dust/vendor/Glad"
+include "Dust/vendor/imgui"
 
 project "Dust"
 	location "Dust"
@@ -41,13 +43,15 @@ project "Dust"
 		"%{prj.name}/src",
 		"%{IncludeDir.spdlog}",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 	
 	links
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

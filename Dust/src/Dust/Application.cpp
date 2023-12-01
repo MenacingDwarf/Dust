@@ -9,6 +9,9 @@ namespace Dust {
 	
 	Application::Application()
 	{
+		DUST_CORE_ASSERT(!s_Instance, "Application already exists!");
+		s_Instance = this;
+		
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		DUST_ASSERT(m_Window, "Cannot create window for your platform!");
 		
@@ -35,11 +38,13 @@ namespace Dust {
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
 		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)

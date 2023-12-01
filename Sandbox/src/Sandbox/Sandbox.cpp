@@ -22,6 +22,7 @@ public:
 	Sandbox() : Dust::Application()
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Dust::ImGuiLayer());
 	};
 	~Sandbox() {};
 };

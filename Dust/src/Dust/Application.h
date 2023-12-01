@@ -19,6 +19,9 @@ namespace Dust {
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 
+		inline static Application& Get() { return *s_Instance; }
+		inline Window& GetWindow() const { return *m_Window; }
+
 	private:
 		void OnEvent(Event& e);
 		bool OnWindowClose(WindowCloseEvent& e);
@@ -27,10 +30,13 @@ namespace Dust {
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+
+		static Application* s_Instance;
 	};
 
 	// To be defined in Dust client applications
 	Application* CreateApplication();
-
+	inline Application* Application::s_Instance = nullptr;
 }
+
 

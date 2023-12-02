@@ -4,8 +4,6 @@
 #include "Events/ApplicationEvent.h"
 
 namespace Dust {
-
-#define BIND_EVENT_FUNC(func) std::bind(&Application::func, this, std::placeholders::_1)
 	
 	Application::Application()
 	{
@@ -15,7 +13,7 @@ namespace Dust {
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		DUST_ASSERT(m_Window, "Cannot create window for your platform!");
 		
-		m_Window->SetEventCallback(BIND_EVENT_FUNC(OnEvent));
+		m_Window->SetEventCallback(DUST_BIND_EVENT_FUNC(Application::OnEvent));
 	}
 
 	Application::~Application()
@@ -50,7 +48,7 @@ namespace Dust {
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FUNC(OnWindowClose));
+		dispatcher.Dispatch<WindowCloseEvent>(DUST_BIND_EVENT_FUNC(Application::OnWindowClose));
 
 		for (LayersListIterator it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{

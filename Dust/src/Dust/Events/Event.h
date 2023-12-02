@@ -20,6 +20,7 @@ namespace Dust {
         
         KeyPressed,
         KeyReleased,
+        KeyTyped,
 
         MouseButtonPressed,
         MouseButtonReleased,

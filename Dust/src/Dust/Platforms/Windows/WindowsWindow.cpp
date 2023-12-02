@@ -102,6 +102,14 @@ namespace Dust
                     DUST_WARN("Cannot parse key event with action {0}", action);
             }
         });
+        
+        glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int key)
+        {
+            WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+            
+            KeyTypedEvent event(key);
+            data.EventCallback(event);
+        });
 
         glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
         {

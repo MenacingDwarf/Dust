@@ -1,5 +1,6 @@
 workspace "Dust"
 	architecture "x64"
+	startproject "Sandbox"
 	configurations
 	{
 		"Debug",
@@ -16,9 +17,11 @@ IncludeDir["GLFW"] = "Dust/vendor/GLFW/include"
 IncludeDir["Glad"] = "Dust/vendor/Glad/include"
 IncludeDir["ImGui"] = "Dust/vendor/imgui"
 
-include "Dust/vendor/GLFW"
-include "Dust/vendor/Glad"
-include "Dust/vendor/imgui"
+group "Dependencies"
+	include "Dust/vendor/GLFW"
+	include "Dust/vendor/Glad"
+	include "Dust/vendor/imgui"
+group ""
 
 project "Dust"
 	location "Dust"
@@ -68,7 +71,7 @@ project "Dust"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"

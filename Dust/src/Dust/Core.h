@@ -10,8 +10,17 @@
 	#error Dust only supports Windows!
 #endif
 
-#define DUST_ASSERT(x, ...) { if(!(x)) { DUST_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-#define DUST_CORE_ASSERT(x, ...) { if(!(x)) { DUST_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#ifdef DUST_DEBUG
+	#define DUST_ENABLE_ASSERTS
+#endif
+
+#ifdef DUST_ENABLE_ASSERTS
+	#define DUST_ASSERT(x, ...) { if(!(x)) { DUST_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define DUST_CORE_ASSERT(x, ...) { if(!(x)) { DUST_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#else
+	#define DUST_ASSERT(x, ...)
+	#define DUST_CORE_ASSERT(x, ...)
+#endif
 
 #define BIT(x) (1 << x)
 

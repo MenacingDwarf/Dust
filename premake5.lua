@@ -76,14 +76,17 @@ project "Dust"
 
 	filter "configurations:Debug"
 		defines "DUST_DEBUG"
+		runtime "Debug"
 		symbols "On"
 		
 	filter "configurations:Release"
 		defines "DUST_RELEASE"
+		runtime "Release"
 		optimize "On"
 		
 	filter "configurations:Dist"
 		defines "DUST_DIST"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
@@ -123,12 +126,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "DUST_DEBUG"
+		runtime "Debug"
 		symbols "On"
 		
 	filter "configurations:Release"
 		defines "DUST_RELEASE"
+		runtime "Release"
 		optimize "On"
 		
 	filter "configurations:Dist"
 		defines "DUST_DIST"
+		runtime "Release"
 		optimize "On"
